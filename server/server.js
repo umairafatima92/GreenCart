@@ -18,10 +18,13 @@ const port = process.env.PORT || 4000;
 await connectDB();
 await connectCloudinary();
 
-const allowedOrigins = "http://localhost:5173";
+// ✅ FIX: Add your production frontend URL
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://green-cart-tpz1.vercel.app"
+];
 
 app.post("/stripe", express.raw({ type: "application/json" }), stripeWebhooks);
-
 app.use(express.json());
 app.use(cookieParser());
 app.use(
@@ -29,7 +32,7 @@ app.use(
     origin: function (origin, callback) {
       // Allow requests with no origin (like mobile apps or curl requests)
       if (!origin) return callback(null, true);
-
+      
       if (allowedOrigins.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
@@ -45,10 +48,9 @@ app.use(
       "Accept",
       "Authorization",
     ],
-    optionsSuccessStatus: 200, // For legacy browser support
+    optionsSuccessStatus: 200,
   })
 );
-
 
 app.get("/", (req, res) => {
   res.send("API is working");
