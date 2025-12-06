@@ -44,11 +44,10 @@ const Cart = () => {
 
   const getUserAddress = async () => {
     try {
-      const { data } = await axios.get(
-        "/api/address/get",
-        { userId: user._id },
-        { withCredentials: true }
-      );
+      const { data } = await axios.get("/api/address/get", {
+        withCredentials: true,
+      });
+      
       if (data.success) {
         setAddresses(data.addresses);
         if (data.addresses.length > 0) {
@@ -240,7 +239,11 @@ const Cart = () => {
                   </p>
                 ))}
                 <p
-                  onClick={() => navigate("/add-address")}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowAddress(false);
+                    navigate("/add-address");
+                  }}
                   className="text-primary text-center cursor-pointer p-2 hover:bg-primary/10"
                 >
                   Add address
