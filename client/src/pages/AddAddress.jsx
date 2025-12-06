@@ -38,21 +38,21 @@ const AddAddress = () => {
       [name]: value,
     }));
   };
-
-  const onSubmitHandler = async (e) => {
-    e.preventDefault();
-    try {
-      const { data } = await axios.post("/api/address/add", { address });
-      if (data.success) {
-        toast.success(data.message);
-        navigate("/cart");
-      } else {
-        toast.error(data.message);
-      }
-    } catch (error) {
-      toast.error(error.message);
+const onSubmitHandler = async (e) => {
+  e.preventDefault();
+  try {
+  
+    const { data } = await axios.post("/api/address/add", address);
+    if (data.success) {
+      toast.success(data.message);
+      navigate("/cart");
+    } else {
+      toast.error(data.message);
     }
-  };
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
 
   useEffect(() => {
     if (!user) {
