@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios"; 
+import axios from "axios";
 import { useAppContext } from "../context/AppContext";
 import { assets } from "../assets/assets";
 import toast from "react-hot-toast";

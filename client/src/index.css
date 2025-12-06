@@ -6,10 +6,12 @@
      font-family: "outfit", sans-serif;
 }
 
-:root {
+@theme{
   --color-primary: #4fbf8b;
   --color-primary-dull: #44ae7c;
 }
+
+
 
 .no-scrollbar::-webtik-scrollbar{
   display: none;

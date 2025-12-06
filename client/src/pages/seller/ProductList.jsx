@@ -14,7 +14,7 @@ const ProductList = () => {
                 fetchProducts();
                 toast.success(data.message);
             } else {
-                toast.error(data.message); 
+                toast.error(data.message);
             }
 
         } catch (error) {
@@ -59,7 +59,7 @@ const ProductList = () => {
                                             <input
                                                 type="checkbox"
                                                 checked={product.inStock}
-                                                onChange={() => toggleStock(product._id, !product.inStock)} 
+                                                onChange={() => toggleStock(product._id, !product.inStock)}
                                                 className="sr-only peer"
                                             />
                                             <div className="w-12 h-7 bg-slate-300 rounded-full peer peer-checked:bg-[#24a47c] transition-colors duration-200"></div>

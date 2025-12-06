@@ -26,7 +26,7 @@ const AddAddress = () => {
     email: "",
     city: "",
     state: "",
-    zipCode: "",   // FIXED
+    zipCode: "",
     country: "",
     phone: "",
   });
@@ -83,7 +83,7 @@ const AddAddress = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <InputField handleChange={handleChange} address={address} name='zipCode' type='text' placeholder='Zip code' /> 
+              <InputField handleChange={handleChange} address={address} name='zipCode' type='text' placeholder='Zip code' />
               <InputField handleChange={handleChange} address={address} name='country' type='text' placeholder='Country' />
             </div>
 

@@ -17,7 +17,7 @@ const Login = () => {
     try {
       let body = {};
 
-     
+
       if (state === "register") {
         body = { name, email, password };
       } else {
@@ -27,7 +27,7 @@ const Login = () => {
       const { data } = await axios.post(`/api/user/${state}`, body);
 
       if (data.success) {
-        if (data.user) setUser(data.user);  
+        if (data.user) setUser(data.user);
         navigate('/');
         setShowUserLogin(false);
       } else {

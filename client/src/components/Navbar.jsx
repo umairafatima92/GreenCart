@@ -39,18 +39,18 @@ const Navbar = () => {
 
       {/* Desktop Menu */}
       <div className="hidden sm:flex items-center gap-8">
-        <NavLink to="/" className="text-gray-800 hover:text-green-600 transition">
+        <NavLink onClick={()=> setOpen(false)} to="/" className="text-gray-800 hover:text-green-600 transition">
           Home
         </NavLink>
 
         <NavLink
-          to="/products"
+          to="/products" onClick={()=> setOpen(false)}
           className="text-gray-800 hover:text-green-600 transition"
         >
           All Products
         </NavLink>
 
-        <NavLink to="/" className="text-gray-800 hover:text-green-600 transition">
+        <NavLink onClick={()=> setOpen(false)} to="/contact" className="text-gray-800 hover:text-green-600 transition">
           Contact
         </NavLink>
 

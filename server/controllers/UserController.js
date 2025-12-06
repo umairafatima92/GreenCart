@@ -33,13 +33,11 @@ export const Register = async (req, res) => {
     const userData = await User.findById(user._id).select("-password");
 
     return res.json({ success: true, user: userData });
-
   } catch (error) {
     console.log(error.message);
     res.json({ success: false, message: error.message });
   }
 };
-
 
 // Login User : /api/user/login
 export const login = async (req, res) => {
@@ -75,40 +73,37 @@ export const login = async (req, res) => {
     user = await User.findById(user._id).select("-password");
 
     return res.json({ success: true, user });
-
   } catch (error) {
     console.log(error.message);
     res.json({ success: false, message: error.message });
   }
 };
 
-
 //Check Auth /api/user/is-auth
 
-export const isAuth = async(req,res)=>{
+export const isAuth = async (req, res) => {
   try {
-    const {userId} = req.body;
-    const user = await User.findById(userId).select("-password")
-    return res.json({success:true,user })
-
+    const { userId } = req.userId;
+    const user = await User.findById(userId).select("-password");
+    return res.json({ success: true, user });
   } catch (error) {
-     console.log(error.message);
+    console.log(error.message);
     res.json({ success: false, message: error.message });
   }
-}
+};
 
 //Logout User :/api/user/logout
 
-export const logout = async(req,res)=>{
+export const logout = async (req, res) => {
   try {
-    res.clearCookie('token',{
-      httpOnly:true,
-      secure:process.env.NODE_ENV === "production",
-      sameSite:process.env.NODE_ENV === "production" ? 'none' : 'strict',
-    })
-    return res.json({success:true,message:"Logged Out"})
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+    });
+    return res.json({ success: true, message: "Logged Out" });
   } catch (error) {
-     console.log(error.message);
+    console.log(error.message);
     res.json({ success: false, message: error.message });
   }
-}
+};

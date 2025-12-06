@@ -17,7 +17,7 @@ const NewsLetter = () => {
             className="text-sm border-r-0 outline-none border border-gray-500/50 pl-3 w-full h-10 rounded-l-md"
           />
           <button
-            type="button"
+            type="submit"
             className="font-medium text-sm text-white bg-[#24a47c] hover:bg-[#1e8c69] w-36 h-10 rounded-r-md"
           >
             Subscribe

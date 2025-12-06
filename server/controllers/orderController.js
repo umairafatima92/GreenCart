@@ -35,9 +35,6 @@ export const PlaceOrderCOD = async (req, res) => {
   }
 };
 
-
-
-
 //   STRIPE ORDER
 
 export const PlaceOrderStripe = async (req, res) => {
@@ -92,7 +89,7 @@ export const PlaceOrderStripe = async (req, res) => {
       cancel_url: `${origin}/cart`,
       metadata: {
         orderId: newOrder._id.toString(),
-        userId: userId.toString(), 
+        userId: userId.toString(),
       },
     });
 
@@ -101,8 +98,6 @@ export const PlaceOrderStripe = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
-
-
 
 //   STRIPE WEBHOOK
 
@@ -122,7 +117,6 @@ export const stripeWebhooks = async (req, res) => {
   }
 
   switch (event.type) {
-
     case "checkout.session.completed": {
       const session = event.data.object;
       const { orderId, userId } = session.metadata;
@@ -148,18 +142,13 @@ export const stripeWebhooks = async (req, res) => {
   res.json({ received: true });
 };
 
-
-
-
 //   GET USER ORDERS
 
 export const getUserOrders = async (req, res) => {
   try {
-    const { userId } = req.body;
-
+    const userId = req.userId;
     const orders = await Order.find({
       userId,
-      $or: [{ paymentType: "COD" }, { isPaid: true }],
     })
       .populate("items.product address")
       .sort({ createdAt: -1 });
@@ -169,8 +158,6 @@ export const getUserOrders = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
-
-
 
 //   GET ALL ORDERS
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { useAppContext } from '../context/AppContext';
 import { useParams } from 'react-router-dom';
 import { categories } from '../assets/assets';
-import ProductCard from '../components/ProductCard'; 
+import ProductCard from '../components/ProductCard';
 
 const ProductCategory = () => {
   const { products } = useAppContext();
@@ -13,6 +13,8 @@ const ProductCategory = () => {
   const searchCategory = categories.find(
     (item) => item.path.toLowerCase() === category.toLowerCase()
   );
+
+
 
   const filterProducts = products.filter(
     (product) =>
